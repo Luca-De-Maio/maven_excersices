@@ -10,7 +10,7 @@ public class VClassFactory extends Factory {
     }
 
     @Override
-    public void build() {
+    public LightComercialVan build() {
         Part door = new Part(1, "Big doors for a big van", "doors larger than a regular car ");
         Part chassis = new Part(2, "VanChassis", "chassis prepared to large amounts of weights ");
         Part tires = new Part (3, "tires", "tires bigger for use of a big van");
@@ -19,6 +19,7 @@ public class VClassFactory extends Factory {
         lcv.addPart(chassis);
         lcv.addPart(tires);
         this.getCars().add(lcv);
+        return lcv;
     }
 
     @Override

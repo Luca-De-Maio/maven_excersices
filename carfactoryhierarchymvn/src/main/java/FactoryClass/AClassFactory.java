@@ -1,6 +1,7 @@
 package FactoryClass;
 
 import AbstractClass.Factory;
+import Car.LightComercialVan;
 import Car.Part;
 import Car.SubcompactExecutiveCar;
 
@@ -22,7 +23,7 @@ public class AClassFactory extends Factory {
     }
 
     @Override
-    public void build() {
+    public SubcompactExecutiveCar build() {
         Part door = new Part(1, "SmartDoor", "doors smaller than a regular car ");
         Part chassis = new Part(2, "SmartChassis", "chassis smaller than a regular car ");
         Part tires = new Part (3, "tires", "tires smaller for use of a small car");
@@ -31,5 +32,6 @@ public class AClassFactory extends Factory {
         sce.addPart(chassis);
         sce.addPart(tires);
         this.getCars().add(sce);
+        return sce;
     }
 }

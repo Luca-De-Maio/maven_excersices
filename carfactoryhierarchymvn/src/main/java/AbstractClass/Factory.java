@@ -31,7 +31,7 @@ public abstract class Factory {
         this.cars = cars;
     }
 
-    public abstract void build();
+    public abstract Car build();
 
     public void addPart(Car part){
         this.cars.add(part);

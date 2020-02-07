@@ -25,15 +25,6 @@ public class ConnectionDb {
         this.port = port;
     }
 
-//    public Connection getConnection(){
-//        try {
-//            return DriverManager.getConnection(hostName + port + dbName, userName, passWord);
-//        } catch (SQLException e) {
-//            LOGGER.info(e.getMessage());
-//            return null;
-//        }
-//    }
-
     public static Connection getConnection(){
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"

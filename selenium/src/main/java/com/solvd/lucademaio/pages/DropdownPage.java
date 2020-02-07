@@ -1,32 +1,31 @@
 package com.solvd.lucademaio.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DropdownPage {
-
-    private WebDriver driver;
-    private By dropdown = By.id("dropdown");
+public class DropdownPage extends AbstractBasePage{
+    @FindBy(id = "dropdown")
+    private WebElement dropdown;
 
     public DropdownPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    public void selectFromDropDown(String option){
-        findDropDownElement().selectByVisibleText(option);
+    public Select selectFromDropDown(String option){
+       Select select = new Select(dropdown);
+       select.selectByVisibleText(option);
+       return select;
     }
 
-    public List<String> getSelectedOptions(){
-        List<WebElement> selectedElements = findDropDownElement().getAllSelectedOptions();
+    public List<String> getSelectedOptions(String option){
+        List<WebElement> selectedElements = selectFromDropDown(option).getAllSelectedOptions();
         return selectedElements.stream().map(e->e.getText()).collect(Collectors.toList());
     }
 
-    private Select findDropDownElement(){
-        return new Select(driver.findElement(dropdown));
-    }
+
 }

@@ -2,17 +2,19 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class EmailSentPage {
+public class EmailSentPage extends AbstractBasePage{
 
-    private WebDriver driver;
-    private By contentArea = By.id("content");
+    @FindBy(id = "content")
+    private WebElement contentArea;
 
-    public EmailSentPage(WebDriver driver){
-        this.driver = driver;
+    public EmailSentPage(WebDriver driver) {
+        super(driver);
     }
 
     public String getAlertText(){
-        return driver.findElement(contentArea).getText();
+        return contentArea.getText();
     }
 }

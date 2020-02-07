@@ -2,14 +2,14 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class SecureAreaPage {
-
-    private WebDriver driver;
+public class SecureAreaPage extends AbstractBasePage{
     private By statusAlert = By.id("flash");
 
-    public SecureAreaPage(WebDriver driver){
-        this.driver = driver;
+    public SecureAreaPage(WebDriver driver) {
+        super(driver);
     }
 
     public String getAlertText(){

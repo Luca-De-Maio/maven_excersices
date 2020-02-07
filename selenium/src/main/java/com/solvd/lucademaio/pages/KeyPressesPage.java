@@ -1,28 +1,24 @@
 package com.solvd.lucademaio.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class KeyPressesPage {
-    private WebDriver driver;
-    private By inputField = By.id("target");
-    private By resultField = By.id("result");
+public class KeyPressesPage extends AbstractBasePage{
+    @FindBy(id = "target")
+    private WebElement inputField;
+    @FindBy(id = "result")
+    private WebElement resultField;
 
-    public KeyPressesPage(WebDriver driver){
-        this.driver = driver;
+    public KeyPressesPage(WebDriver driver) {
+        super(driver);
     }
 
     public void enterText(String text){
-        driver.findElement(inputField).sendKeys(text);
-    }
-
-    public void enterPi(){
-        enterText(Keys.chord(Keys.ALT, "p"));
+        inputField.sendKeys(text);
     }
 
     public String getResult(){
-        return driver.findElement(resultField).getText();
+        return resultField.getText();
     }
 }

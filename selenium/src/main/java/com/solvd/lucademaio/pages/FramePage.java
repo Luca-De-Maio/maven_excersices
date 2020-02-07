@@ -2,31 +2,33 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class FramePage {
-    private WebDriver driver;
-    private By textAreaField = By.id("tinymce");
+public class FramePage extends AbstractBasePage{
+    @FindBy(id = "tinymce")
+    private WebElement textAreaField;
     String editorIframeId = "mce_0_ifr";
 
     public FramePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void clearTextArea(){
         switchToEditArea();
-        driver.findElement(textAreaField).clear();
+        textAreaField.clear();
         switchToMainArea();
     }
 
     public void setTextArea(String text){
         switchToEditArea();
-        driver.findElement(textAreaField).sendKeys(text);
+        textAreaField.sendKeys(text);
         switchToMainArea();
     }
 
     public String getTextArea(){
         switchToEditArea();
-        String str = driver.findElement(textAreaField).getText();
+        String str = textAreaField.getText();
         switchToMainArea();
         return str;
     }

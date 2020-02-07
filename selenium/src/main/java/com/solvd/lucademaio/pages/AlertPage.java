@@ -2,18 +2,23 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class AlertPage {
-    private WebDriver driver;
-    private By alertButtonField = By.xpath(".//button[text():'Click for JS Alert']");
-    private By acceptButtonField = By.id("resul");
+public class AlertPage extends AbstractBasePage{
+    @FindBy(xpath = ".//button[text():'Click for JS Alert']")
+    private WebElement alertButtonField;
+
+    @FindBy(id = "resul")
+    private WebElement acceptButtonField;
+
 
     public AlertPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void clickAlertButton(){
-        driver.findElement(alertButtonField).click();
+        alertButtonField.click();
     }
 
     public void acceptAlertButton(){
@@ -21,6 +26,6 @@ public class AlertPage {
     }
 
     public String getAcceptButtonField() {
-        return driver.findElement(acceptButtonField).getText();
+        return acceptButtonField.getText();
     }
 }

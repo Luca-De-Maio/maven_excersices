@@ -2,23 +2,26 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class ForgotPasswordPage {
+public class ForgotPasswordPage extends AbstractBasePage{
 
-    private WebDriver driver;
-    private By emailField = By.id("email");
-    private By retrievePasswordButton = By.id("form_submit");
+    @FindBy(id = "email")
+    private WebElement emailField;
+    @FindBy(id = "form_submit")
+    private WebElement retrievePasswordButton;
 
     public ForgotPasswordPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public void enterEmail(String email){
-        driver.findElement(emailField).sendKeys(email);
+       emailField.sendKeys(email);
     }
 
     public EmailSentPage clickRetrievePassword(){
-        driver.findElement(retrievePasswordButton).click();
+        retrievePasswordButton.click();
         return new EmailSentPage(driver);
     }
 

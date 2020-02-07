@@ -2,29 +2,34 @@ package com.solvd.lucademaio.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
-public class LoginPage {
+public class LoginPage extends AbstractBasePage{
 
     private WebDriver driver;
-    private By usernameField = By.id("username");
-    private By passwordField = By.id("password");
-    private By loginButton = By.cssSelector("#login button");
+    @FindBy(id = "username")
+    private WebElement usernameField;
+    @FindBy(id = "password")
+    private WebElement passwordField;
+    @FindBy(css = "#com.login button")
+    private WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public SecureAreaPage clickLoginButton(){
-        driver.findElement(loginButton).click();
+        loginButton.click();
         return new SecureAreaPage(driver);
     }
 
     public void setUserName(String username){
-        driver.findElement(usernameField).sendKeys(username);
+        usernameField.sendKeys(username);
     }
 
     public void setPassword(String password){
-        driver.findElement(passwordField).sendKeys(password);
+        passwordField.sendKeys(password);
     }
 }
 

@@ -12,6 +12,8 @@ public class User {
     private Long idUser;
     @Column(name = "name")
     private String name;
+    @Column(name= "telefono")
+    private String telefono;
     @Column(name = "lastName")
     private String lastName;
     @Column(name = "dni")
@@ -25,15 +27,28 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(Long idUser, String name, String lastName, int dni, String province, String city, String email, String password) {
+    public User(Long idUser, String name, String telefono, String lastName, int dni, String province, String city, String email, String password) {
         this.idUser = idUser;
         this.name = name;
+        this.telefono = telefono;
         this.lastName = lastName;
         this.dni = dni;
         this.province = province;
         this.city = city;
         this.email = email;
         this.password = password;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getLastName() {

@@ -15,13 +15,15 @@ public class Product {
     private String nombre;
     @Column(name = "detalle")
     private String detalle;
+    @Column(name = "garantia")
+    private int garantia;
 
-    public Product(Long idProduct, String nombre, String detalle) {
+    public Product(Long idProduct, String nombre, String detalle, int garantia) {
         this.idProduct = idProduct;
         this.nombre = nombre;
         this.detalle = detalle;
+        this.garantia = garantia;
     }
-
 
     public Long getIdProduct() {
         return idProduct;
@@ -45,5 +47,13 @@ public class Product {
 
     public void setDetalle(String detalle) {
         this.detalle = detalle;
+    }
+
+    public int getGarantia() {
+        return garantia;
+    }
+
+    public void setGarantia(int garantia) {
+        this.garantia = garantia;
     }
 }

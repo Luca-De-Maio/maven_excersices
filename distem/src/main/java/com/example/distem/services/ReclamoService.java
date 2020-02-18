@@ -12,6 +12,10 @@ public class ReclamoService {
     @Autowired
     private ReclamoRepository reclamoRepository;
 
+    public void setReclamoRepository(ReclamoRepository reclamoRepository) {
+        this.reclamoRepository = reclamoRepository;
+    }
+
     public List<Claim> getAll() {
         return reclamoRepository.findAll();
     }

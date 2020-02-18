@@ -3,15 +3,18 @@ package com.example.distem.controllers;
 import com.example.distem.models.Claim;
 import com.example.distem.services.ReclamoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/reclamoInvitado")
-public class ReclamoController {
+@CrossOrigin()
+@RequestMapping("/reclamo")
+public class ClaimController {
     @Autowired
     private ReclamoService reclamoService;
 
@@ -20,10 +23,16 @@ public class ReclamoController {
         return reclamoService.getAll();
     }
 
-    @PostMapping(value = "/add")
-    public Long agregarReclamo(@RequestBody Claim claim){
+//    @PostMapping(value = "/add")
+//    public agregarReclamo(@RequestBody Claim claim){
+//        reclamoService.addReclamo(claim);
+//        return claim.getIdReclamo();
+//    }
+
+    @PostMapping("/new")
+    public ResponseEntity newClaim(@RequestBody Claim claim) {
         reclamoService.addReclamo(claim);
-        return claim.getIdReclamo();
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -13,8 +13,12 @@ class ApiService {
 	}
 
 	getUserByName(name) {
-		return axios.get(USER_API_BASE_URL + '/' + name)
+		return axios.get(USER_API_BASE_URL + '/' + name);
 	}
+
+	//addReclamo(reclamo) {
+	//	return axios.post(USER_API_BASE_URL + '/new', {posted_data : reclamo)
+	//}
 
 }
 

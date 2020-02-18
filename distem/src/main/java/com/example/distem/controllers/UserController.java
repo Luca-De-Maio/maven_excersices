@@ -1,5 +1,6 @@
 package com.example.distem.controllers;
 
+import com.example.distem.models.Claim;
 import com.example.distem.models.User;
 import com.example.distem.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +31,14 @@ public class UserController {
         return userService.getAll();
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/one/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> getOne(@PathVariable("id") Long pepito){
         return new ResponseEntity<>(userService.getById(pepito), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getByUserName(@PathVariable("name") String name){
+        return new ResponseEntity<>(userService.getByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/greeting")

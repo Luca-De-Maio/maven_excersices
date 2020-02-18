@@ -25,6 +25,9 @@ public class Product {
         this.garantia = garantia;
     }
 
+    public Product() {
+    }
+
     public Long getIdProduct() {
         return idProduct;
     }

@@ -20,4 +20,8 @@ public class UserService {
     public User getById(Long idUser){
         return userRepository.findById(idUser).orElse(null);
     }
+
+    public User getByName(String name) {
+        return userRepository.findByName(name).orElse(null);
+    }
 }

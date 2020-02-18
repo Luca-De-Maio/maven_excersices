@@ -30,6 +30,9 @@ public class Claim {
         this.user = user;
     }
 
+    public Claim() {
+    }
+
     public String getTitulo() {
         return titulo;
     }
